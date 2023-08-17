@@ -54,17 +54,18 @@ class _LoginForm extends ConsumerWidget {
   void showSnackbar(BuildContext context, String message) {
     ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
     ScaffoldMessenger.of(context).showMaterialBanner(MaterialBanner(
+      elevation: 1,
       content: Text(message),
       actions: <Widget>[
         TextButton(
-          onPressed: () =>
-              ScaffoldMessenger.of(context).hideCurrentMaterialBanner(),
+          onPressed: () => ScaffoldMessenger.of(context).clearMaterialBanners(),
           child: const Text('Entendido'),
         ),
       ],
     ));
-    Future.delayed(const Duration(seconds: 5),
-        () => ScaffoldMessenger.of(context).hideCurrentMaterialBanner());
+    // ScaffoldMessenger.of(context).
+    // Future.delayed(const Duration(seconds: 5),
+    //     () => ScaffoldMessenger.of(context).hideCurrentMaterialBanner());
   }
 
   @override
@@ -107,7 +108,9 @@ class _LoginForm extends ConsumerWidget {
                 text: 'Ingresar',
                 buttonColor: Colors.black,
                 onPressed: () {
-                  ref.read(loginFormProvider.notifier).onFormSubmit();
+                  loginForm.isPosting
+                      ? null
+                      : ref.read(loginFormProvider.notifier).onFormSubmit();
                 },
               )),
           const Spacer(flex: 2),

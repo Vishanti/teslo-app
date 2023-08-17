@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:teslo_app/config/config.dart';
-import 'package:teslo_app/config/router/app_router.dart';
 
+void main() async {
+  await Environment.initEnvironment();
 
-void main() {
   runApp(const ProviderScope(
     child: MainApp(),
   ));

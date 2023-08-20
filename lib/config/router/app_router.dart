@@ -30,6 +30,12 @@ final goRouterProvider = Provider((ref) {
         builder: (context, state) => const RegisterScreen(),
       ),
 
+      ///* Register Screen
+      GoRoute(
+        path: '/product/:id',
+        builder: (context, state) => ProductScreen(productId: state.params['id'] ?? 'no-id'),
+      ),
+
       ///* Products Screen
       GoRoute(
         path: '/',

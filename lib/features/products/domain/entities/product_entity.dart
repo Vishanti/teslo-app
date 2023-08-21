@@ -24,6 +24,6 @@ class ProductEntity {
     required this.gender,
     required this.tags,
     required this.images,
-    required this.user,
+    this.user,
   });
 }
